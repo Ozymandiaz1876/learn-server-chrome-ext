@@ -12,19 +12,12 @@ export default defineManifest({
   }`,
   version: packageData.version,
   description: packageData.description,
+  action: {
+    default_popup: 'src/popup.html',
+  },
   background: {
     service_worker: 'src/background/index.ts',
     type: 'module',
-  },
-  options_page: 'src/options/index.html',
-  action: {
-    default_popup: 'src/popup/index.html',
-    default_icon: {
-      16: 'icon16.png',
-      32: 'icon32.png',
-      48: 'icon48.png',
-      128: 'icon128.png',
-    },
   },
   icons: {
     16: 'icon16.png',
@@ -32,7 +25,8 @@ export default defineManifest({
     48: 'icon48.png',
     128: 'icon128.png',
   },
-  permissions: ['activeTab', 'storage'],
+  permissions: ['tabs', 'scripting', 'storage'],
+  host_permissions: ['https://study-helper.chandreshsharma06-cs.workers.dev/*'],
   content_scripts: [
     {
       js: isDev
@@ -43,7 +37,7 @@ export default defineManifest({
   ],
   web_accessible_resources: [
     {
-      resources: ['*.js', '*.css', 'public/*'],
+      resources: ['*.js', '*.css', '*.html', 'src/popup.html'],
       matches: ['<all_urls>'],
     },
   ],

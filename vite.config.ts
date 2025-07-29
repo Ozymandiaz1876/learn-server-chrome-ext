@@ -63,6 +63,10 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        popup: resolve(__dirname, 'src/popup.html'),
+      },
       output: {
         assetFileNames: (assetInfo) => {
           if (

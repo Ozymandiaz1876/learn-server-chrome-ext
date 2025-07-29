@@ -1,8 +1,8 @@
-import styles from '@assets/styles/index.css?inline';
-import createShadowRoot from '@utils/createShadowRoot';
+import { createRoot } from 'react-dom/client';
 
 import Content from './Content';
 
-const root = createShadowRoot(styles);
+const root = document.createElement('div');
+document.body.appendChild(root);
 
-root.render(<Content />);
+createRoot(root).render(<Content />);
